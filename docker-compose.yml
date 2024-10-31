@@ -1,0 +1,17 @@
+# docker-compose -f docker-compose.yml up -d --no-recreate
+# docker-compose -f docker-compose.yml down
+
+services:
+  web:
+    container_name: inno_os6resume
+    image: node:lts-iron
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "10182:3000"
+    command: >
+      sh -c "cd /var/www/html && rm -fr build && npm install && npm run build && npm run start"
+
+    # command: >
+    #   sh -c "cd /var/www/html && sleep 36000"
+
