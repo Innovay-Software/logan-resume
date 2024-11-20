@@ -12,7 +12,7 @@ const ResumeSideBar = ({ userData }: { userData: UserDataInterface }) => {
         <div className=" text-sm text-gray-500">Software Engineer</div>
       </div>
       <figure className={Styles.sidebarImage + " mt-[-18px] relative"}>
-        <img src="selfie3.jpg" alt="avatar" className="w-full aspect-auto" />
+        <img src="selfie3_cartoon.jpg" alt="avatar" className="w-full aspect-auto" />
         {/* <div className='absolute bottom-0 rounded-full w-12 h-12 bg-sky-600'>
         </div> */}
       </figure>
