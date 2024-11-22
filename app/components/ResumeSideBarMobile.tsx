@@ -7,7 +7,7 @@ export default function ResumeSideBarMobile({
   userData: UserDataInterface
 }) {
   const metrics: string[][] = [
-    [userData.resumeData.resumeSideBar.portfolio, 'Portfolios'],
+    [userData.resumeData.resumeSideBar.portfolios, 'Portfolios'],
     [userData.resumeData.resumeSideBar.years, 'Years'],
     [userData.resumeData.resumeSideBar.educations, 'Educations'],
   ]
@@ -24,9 +24,7 @@ export default function ResumeSideBarMobile({
       <div className="text-4xl font-bold mt-10">LOGAN DAI</div>
       <div className="text-xl text-gray-700 mt-5">Software Engineer</div>
       <div className="text-lg  mx-10 text-gray-400 mt-10">
-        Full-stack software engineer specializing in{' '}
-        <span className="text-gray-400">Cloud Solution System Design</span> and{' '}
-        <span className="text-gray-400">Data Analytics</span>.
+        {userData.resumeData.resumeSideBar.summary}
       </div>
       <div className="flex justify-evenly items-center px-5 mt-10">
         {metrics.map((item, index) => (

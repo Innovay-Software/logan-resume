@@ -12,7 +12,8 @@ export interface UserDataInterface {
   resumeData: {
     resumeSideBar: {
       name: string
-      portfolio: string
+      summary: string
+      portfolios: string
       years: string
       educations: string
       metadata: {
