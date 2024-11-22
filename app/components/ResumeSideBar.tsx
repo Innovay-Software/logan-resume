@@ -1,18 +1,26 @@
-import React from "react";
-import Styles from "./ResumeSideBar.module.css";
-import { UserDataInterface } from "../interfaces/userDataInterface";
+import React from 'react'
+import Styles from './ResumeSideBar.module.css'
+import { UserDataInterface } from '../interfaces/userDataInterface'
 
-const ResumeSideBar = ({ userData }: { userData: UserDataInterface }) => {
-  const [showSensitiveInfo, setShowSensitiveInfo] = React.useState(false);
+export default function ResumeSideBar({
+  userData,
+}: {
+  userData: UserDataInterface
+}) {
+  const [showSensitiveInfo, setShowSensitiveInfo] = React.useState(false)
 
   return (
-    <div className="bg-white rounded-lg">
+    <div className="bg-white rounded-lg hidden md:block">
       <div className="p-6 pb-0 mb-4">
         <div className="text-xl font-bold text-gray-800 mb-1">LOGAN DAI</div>
         <div className=" text-sm text-gray-500">Software Engineer</div>
       </div>
-      <figure className={Styles.sidebarImage + " mt-[-18px] relative"}>
-        <img src="selfie3_cartoon.jpg" alt="avatar" className="w-full aspect-auto" />
+      <figure className={Styles.sidebarImage + ' mt-[-18px] relative'}>
+        <img
+          src="selfie3_cartoon.jpg"
+          alt="avatar"
+          className="w-full aspect-auto"
+        />
         {/* <div className='absolute bottom-0 rounded-full w-12 h-12 bg-sky-600'>
         </div> */}
       </figure>
@@ -21,26 +29,36 @@ const ResumeSideBar = ({ userData }: { userData: UserDataInterface }) => {
           <div className="border-l-[2px] h-10 border-l-gray-200" />
           {userData.resumeData.resumeSideBar.metadata.map((item, index) => {
             if (!showSensitiveInfo && item.sensitive) {
-              return;
+              return
             }
+            const content = item.url ? (
+              <a href={item.url} target="_blank" className="text-sm ml-4 ">
+                {item.key}:
+                <span className=" ml-2 text-blue-500 underline">
+                  {item.value}
+                </span>
+              </a>
+            ) : (
+              <div className="text-sm ml-4">
+                {item.key}:<span className=" ml-2 ">{item.value}</span>
+              </div>
+            )
+
             return (
               <div
                 key={index}
-                className="relative flex items-center pb-6 border-l-[2px] border-l-gray-200"
+                className="relative flex items-center pb-6 border-l-[2px] border-l-gray-200 text-gray-500"
               >
-                <div className="text-sm ml-4">
-                  {item.key}:
-                  <span className=" ml-2 text-gray-500">{item.value}</span>
-                </div>
+                {content}
                 {index <
                 userData.resumeData.resumeSideBar.metadata.length - 1 ? (
-                  ""
+                  ''
                 ) : (
                   <div className="absolute -left-2 w-2 top-[4px] bottom-0 bg-white"></div>
                 )}
                 <div className="absolute left-[-6px] top-[4px] w-[10px] h-[10px] border-sky-600 bg-white border-2 rounded-full" />
               </div>
-            );
+            )
           })}
           {!showSensitiveInfo && (
             <div className="relative">
@@ -66,7 +84,5 @@ const ResumeSideBar = ({ userData }: { userData: UserDataInterface }) => {
         </div>
       </div>
     </div>
-  );
-};
-
-export default ResumeSideBar;
+  )
+}

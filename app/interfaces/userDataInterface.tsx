@@ -1,40 +1,48 @@
 interface portfolioContentInterface {
+  title: string
+  subtitle: string
   photos: {
-    original: string,
-    thumbnail: string,
-    description: string,
-  }[],
+    original: string
+    thumbnail: string
+    description: string
+  }[]
 }
 
 export interface UserDataInterface {
   resumeData: {
     resumeSideBar: {
-      name: string;
-      metadata: { key: string; value: string; sensitive?: boolean }[];
-    },
+      name: string
+      portfolio: string
+      years: string
+      educations: string
+      metadata: {
+        key: string
+        value: string
+        url?: string
+        sensitive?: boolean
+      }[]
+    }
     resumeTopBar: {
-      titles: { text: string; icon: string }[];
-    },
+      titles: { text: string; icon: string }[]
+    }
     resumePanel: {
+      qualifications: string[]
       technicalSkills: {
-        title: string;
-        itemList: string;
-        items: { text: string; level: number }[];
-      }[];
+        title: string
+        items: { text: string; level: number }[]
+      }[]
       workHistory: {
-        title: string;
-        company: string;
-        duration: string;
-        descriptions: string[];
-      }[];
+        title: string
+        company: string
+        duration: string
+        descriptions: string[]
+      }[]
       education: {
-        school: string;
-        duration: string;
-        degree: string;
-      }[];
-    },
-  },
-  portfolioData: {
-    [key: string]: portfolioContentInterface,
+        school: string
+        duration: string
+        degree: string
+      }[]
+    }
   }
+  portfolioData: portfolioContentInterface[]
 }

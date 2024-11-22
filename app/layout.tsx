@@ -4,7 +4,11 @@ import { Inter, Roboto } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
-const roboto = Roboto({ subsets: ['latin'], weight: ['300', '400', '500', '700', '900'] })
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700', '900'],
+})
+const bodyClassNames = '' // `${roboto.className} `
 
 export const metadata: Metadata = {
   title: 'Logan Dai',
@@ -18,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="winter">
-      <body className={roboto.className}>{children}</body>
+      <body className={bodyClassNames}>{children}</body>
     </html>
   )
 }
