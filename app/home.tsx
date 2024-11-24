@@ -16,34 +16,32 @@ function Home({ userData }: { userData: UserDataInterface }) {
     searchParams.get('t') == '1' ? 1 : 0
   )
   return (
-    <Suspense>
-      <main className="flex items-center justify-center bg-slate-100 p-0 md:p-8">
-        <div className="max-w-screen-lg grid grid-cols-6 md:gap-8">
-          <FooterMenuMobile userData={userData} />
-          <div className="col-span-6 md:col-span-2">
-            <ResumeSideBar userData={userData} />
-            <ResumeSideBarMobile userData={userData} />
+    <main className="flex items-center justify-center bg-slate-100 p-0 md:p-8">
+      <div className="max-w-screen-lg grid grid-cols-6 md:gap-8">
+        <FooterMenuMobile userData={userData} />
+        <div className="col-span-6 md:col-span-2">
+          <ResumeSideBar userData={userData} />
+          <ResumeSideBarMobile userData={userData} />
+        </div>
+        <div className="col-span-6 md:col-span-4">
+          <ResumeTopBar
+            userData={userData}
+            currentIndex={currentPageIndex}
+            onButtonClick={setCurrentPageIndex}
+          />
+          <div className={`md:${currentPageIndex == 0 ? 'block' : 'hidden'}`}>
+            <ResumePanel userData={userData} />
           </div>
-          <div className="col-span-6 md:col-span-4">
-            <ResumeTopBar
-              userData={userData}
-              currentIndex={currentPageIndex}
-              onButtonClick={setCurrentPageIndex}
-            />
-            <div className={`md:${currentPageIndex == 0 ? 'block' : 'hidden'}`}>
-              <ResumePanel userData={userData} />
-            </div>
-            <div
-              className={`mt-10 md:mt-0 md:${
-                currentPageIndex == 1 ? 'block' : 'hidden'
-              }`}
-            >
-              <PortfolioPanel userData={userData} />
-            </div>
+          <div
+            className={`mt-10 md:mt-0 md:${
+              currentPageIndex == 1 ? 'block' : 'hidden'
+            }`}
+          >
+            <PortfolioPanel userData={userData} />
           </div>
         </div>
-      </main>
-    </Suspense>
+      </div>
+    </main>
   )
 }
 

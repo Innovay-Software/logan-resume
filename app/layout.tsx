@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Roboto } from 'next/font/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 import './globals.css'
 
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="winter">
       <body className={bodyClassNames}>{children}</body>
+      <GoogleAnalytics gaId="G-XEZ971T5PJ" />
     </html>
   )
 }

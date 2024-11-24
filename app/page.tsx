@@ -1,8 +1,8 @@
 import ReactGA from 'react-ga4'
 import './globals.css'
-import Home from './home'
 import { promises as fs } from 'fs'
 import { UserDataInterface } from './interfaces/userDataInterface'
+import Home from './home'
 
 export default async function Main() {
   const userDataJson = await fs.readFile(

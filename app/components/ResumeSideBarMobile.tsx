@@ -1,5 +1,6 @@
 import React from 'react'
 import { UserDataInterface } from '../interfaces/userDataInterface'
+import Image from 'next/image'
 
 export default function ResumeSideBarMobile({
   userData,
@@ -15,8 +16,10 @@ export default function ResumeSideBarMobile({
   return (
     <div className="text-center bg-blue-50 py-10 pt-24 rounded-lg md:hidden ">
       <figure className="rounded-full w-1/2 aspect-square flex justify-center items-center overflow-hidden mx-auto shadow-lg shadow-blue-400">
-        <img
-          src="selfie3_cartoon.jpg"
+        <Image
+          width="300"
+          height="300"
+          src="/selfie3_cartoon.jpg"
           alt="avatar"
           className="w-full aspect-auto"
         />

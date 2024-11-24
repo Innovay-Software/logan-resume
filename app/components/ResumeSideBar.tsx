@@ -1,6 +1,7 @@
 import React from 'react'
 import Styles from './ResumeSideBar.module.css'
 import { UserDataInterface } from '../interfaces/userDataInterface'
+import Image from 'next/image'
 
 export default function ResumeSideBar({
   userData,
@@ -16,9 +17,11 @@ export default function ResumeSideBar({
         <div className=" text-sm text-gray-500">Software Engineer</div>
       </div>
       <figure className={Styles.sidebarImage + ' mt-[-18px] relative'}>
-        <img
-          src="selfie3_cartoon.jpg"
+        <Image
+          src="/selfie3_cartoon.jpg"
           alt="avatar"
+          width="300"
+          height="300"
           className="w-full aspect-auto"
         />
         {/* <div className='absolute bottom-0 rounded-full w-12 h-12 bg-sky-600'>
@@ -72,8 +75,10 @@ export default function ResumeSideBar({
             </div>
           )}
           <div className="absolute left-[-19px] top-[-20px] w-[40px] h-[40px] flex justify-center items-center bg-sky-600 rounded-full">
-            <img
-              src="glasses-icon.png"
+            <Image
+          width="300"
+          height="300"
+              src="/glasses-icon.png"
               alt="avatar"
               className="w-8 aspect-auto m-auto"
             />
