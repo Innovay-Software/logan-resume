@@ -67,7 +67,7 @@ export default function ResumePanel({
                 }}
               >
                 <Image
-                  className="w-full aspect-auto"
+                  className="w-full aspect-auto cursor-pointer"
                   src={photo.thumbnail}
                   alt={''}
                   width={100}
@@ -90,7 +90,7 @@ export default function ResumePanel({
                 }}
               >
                 <Image
-                  className="w-full aspect-auto"
+                  className="w-full aspect-auto cursor-pointer"
                   src={photo.thumbnail}
                   alt={''}
                   width={100}
