@@ -59,7 +59,9 @@ export default function ResumePanel({
             {portfolio.photos.map((photo, index2) => (
               <div
                 key={index2}
-                className="w-24 h-32 cursor-pointer rounded-lg overflow-hidden flex justify-center items-start border-blue-200 border-2"
+                className={`"cursor-pointer rounded-lg overflow-hidden flex justify-center items-start border-blue-200 border-2
+                  ${portfolio.photoVertical ? ' w-24 h-32 ' : ' w-32 h-24 '}
+                  `}
                 onClick={() => {
                   onDesktopThumbnailTap(index, index2)
                 }}
@@ -70,7 +72,7 @@ export default function ResumePanel({
                   alt={''}
                   width={100}
                   height={0}
-                  style={{ width: '100%', height: 'auto' }}
+                  // style={{ width: '100%', height: 'auto' }}
                 />
               </div>
             ))}
@@ -80,7 +82,9 @@ export default function ResumePanel({
             {portfolio.photos.map((photo, index2) => (
               <div
                 key={index2}
-                className="w-24 h-32 cursor-pointer rounded-lg overflow-hidden flex justify-center items-start border-blue-200 border-2"
+                className={`cursor-pointer rounded-lg overflow-hidden flex justify-center items-start border-blue-200 border-2
+                  ${portfolio.photoVertical ? ' w-24 h-32 ' : ' w-32 h-24 '}
+                  `}
                 onClick={() => {
                   onMobileThumbnailTap(index, index2)
                 }}
@@ -91,7 +95,7 @@ export default function ResumePanel({
                   alt={''}
                   width={100}
                   height={0}
-                  style={{ width: '100%', height: 'auto' }}
+                  // style={{ width: '100%', height: 'auto' }}
                 />
               </div>
             ))}

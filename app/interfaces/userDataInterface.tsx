@@ -1,6 +1,7 @@
 interface portfolioContentInterface {
   title: string
   subtitle: string
+  photoVertical: boolean
   photos: {
     original: string
     thumbnail: string
