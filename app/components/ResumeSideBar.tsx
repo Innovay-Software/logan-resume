@@ -2,14 +2,13 @@ import React from 'react'
 import Styles from './ResumeSideBar.module.css'
 import { UserDataInterface } from '../interfaces/userDataInterface'
 import Image from 'next/image'
+import ContactInfoModal from './ContactInfoModal'
 
 export default function ResumeSideBar({
   userData,
 }: {
   userData: UserDataInterface
 }) {
-  const [showSensitiveInfo, setShowSensitiveInfo] = React.useState(false)
-
   return (
     <div className="bg-white rounded-lg hidden md:block">
       <div className="p-6 pb-0 mb-4">
@@ -31,7 +30,7 @@ export default function ResumeSideBar({
         <div className="relative pb-6">
           <div className="border-l-[2px] h-10 border-l-gray-200" />
           {userData.resumeData.resumeSideBar.metadata.map((item, index) => {
-            if (!showSensitiveInfo && item.sensitive) {
+            if (item.sensitive) {
               return
             }
             const content = item.url ? (
@@ -63,21 +62,15 @@ export default function ResumeSideBar({
               </div>
             )
           })}
-          {!showSensitiveInfo && (
-            <div className="relative">
-              <div className="absolute -left-1 w-2 -top-[30px] bottom-0 bg-white"></div>
-              <button
-                className="ml-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                onClick={(event) => setShowSensitiveInfo(true)}
-              >
-                Show Contact Info
-              </button>
+          <ContactInfoModal userData={userData}>
+            <div className="ml-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              Show Contact Info
             </div>
-          )}
+          </ContactInfoModal>
           <div className="absolute left-[-19px] top-[-20px] w-[40px] h-[40px] flex justify-center items-center bg-sky-600 rounded-full">
             <Image
-          width="300"
-          height="300"
+              width="300"
+              height="300"
               src="/glasses-icon.png"
               alt="avatar"
               className="w-8 aspect-auto m-auto"

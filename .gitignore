@@ -37,3 +37,4 @@ next-env.d.ts
 
 .prettierrc.json
 UserData.json
+.env

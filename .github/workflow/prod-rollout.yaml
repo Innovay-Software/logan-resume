@@ -1,0 +1,21 @@
+name: prod-rollout
+on: 
+  push:
+    branches: [main]
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Trigger remote server rollout
+      uses: appleboy/ssh-action@v1.2.0
+      with:
+        host: ${{ secrets.H2_VPS_IP }}
+        username: ${{ secrets.H2_VPS_USERNAME }}
+        key: ${{ secrets.H2_VPS_SSH_PRIVATE_KEY }}
+        port: ${{ secrets.H2_VPS_PORT }}
+        script: |
+          echo `date` >> ~/github-action.logan-innovay-dev.log
+          kubectl rollout restart deploy/logan-innovay-dev-deploy -ninnovay
+          echo "Completed\n" >> ~/github-action.logan-innovay-dev.log
