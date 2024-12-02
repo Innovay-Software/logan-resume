@@ -1,11 +1,11 @@
 'use client'
 
-import React, { useState } from 'react'
-import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react'
+import React from 'react'
 import ResumeSVG from './svgs/resume'
 import PortfolioSVG from './svgs/portfolio'
 import ContactSVG from './svgs/contact'
 import { UserDataInterface } from '../interfaces/userDataInterface'
+import ContactInfoModal from './ContactInfoModal'
 
 export default function FooterMenuMobile({
   userData,
@@ -14,13 +14,7 @@ export default function FooterMenuMobile({
 }) {
   const iconSize = 30
 
-  const [showContactInfo, setShowContactInfo] = useState(false)
-
   function onMenuTap(target: string) {
-    if (target == 'contact-us') {
-      setShowContactInfo(true)
-      return
-    }
     const element = document.querySelector(`#${target}`)
     if (element) {
       // Smooth scroll to that elment
@@ -53,70 +47,16 @@ export default function FooterMenuMobile({
           <PortfolioSVG width={iconSize} height={iconSize} />
           <div className="mt-2">Portfolio</div>
         </div>
-        <div
-          className="flex-1 flex flex-col justify-center items-center"
-          onClick={() => {
-            onMenuTap('contact-us')
-          }}
-        >
-          <ContactSVG width={iconSize} height={iconSize} />
-          <div className="mt-2">Contact</div>
+
+        <div className="flex-1 flex flex-col justify-center items-center">
+          <ContactInfoModal userData={userData}>
+            <div className="flex flex-col justify-center items-center">
+              <ContactSVG width={iconSize} height={iconSize} />
+              <div className="mt-2">Contact</div>
+            </div>
+          </ContactInfoModal>
         </div>
       </div>
-      <Dialog
-        open={showContactInfo}
-        onClose={setShowContactInfo}
-        className="relative z-10"
-      >
-        <DialogBackdrop
-          transition
-          className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
-        />
-        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
-            <DialogPanel
-              transition
-              className="flex-1 relative p-10 transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
-            >
-              <div className="mx-auto md:hidden">
-                <div className="flex flex-col items-start justify-evenly">
-                  {userData.resumeData.resumeSideBar.metadata.map(
-                    (item, index) => {
-                      if (item.url == undefined) {
-                        return
-                      }
-                      return (
-                        <div
-                          key={index}
-                          className="relative flex items-center py-3 border-l-[2px] border-l-gray-200 text-gray-500"
-                        >
-                          {item.url ? (
-                            <a
-                              href={item.url}
-                              target="_blank"
-                              className="text-md ml-4 "
-                            >
-                              {item.key}:
-                              <span className=" ml-2 text-blue-500 underline">
-                                {item.value}
-                              </span>
-                            </a>
-                          ) : (
-                            <div className="text-md ml-4">
-                              {item.key}:
-                              <span className=" ml-2 ">{item.value}</span>
-                            </div>
-                          )}
-                        </div>
-                      )
-                    }
-                  )}
-                </div>
-              </div>
-            </DialogPanel>
-          </div>
-        </div>
-      </Dialog>
     </div>
   )
 }
