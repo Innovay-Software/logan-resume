@@ -45,6 +45,11 @@ export default function ContactInfoModal({
       `${process.env.NEXT_PUBLIC_CONTACT_LINKEDIN}`,
       `${process.env.NEXT_PUBLIC_CONTACT_LINKEDIN}`,
     ],
+    [
+      'GitHub',
+      `${process.env.NEXT_PUBLIC_CONTACT_GITHUB}`,
+      `${process.env.NEXT_PUBLIC_CONTACT_GITHUB}`,
+    ],
   ]
 
   const onOpenTap = (e: React.MouseEvent<HTMLButtonElement>) => {
